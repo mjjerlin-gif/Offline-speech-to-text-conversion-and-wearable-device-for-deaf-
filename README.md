@@ -1,4 +1,4 @@
-# Voice Reminder App
+# Speech to text App
 
 This is an Android app that uses **Vosk Offline Speech Recognition** and **Bluetooth** to receive messages from an ESP32 device.  
 When the ESP32 sends a "TOUCHED" message, the app starts offline speech recognition and displays the recognized text.

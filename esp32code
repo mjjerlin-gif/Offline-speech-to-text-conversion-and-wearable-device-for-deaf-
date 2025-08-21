@@ -1,0 +1,23 @@
+#include "BluetoothSerial.h"
+BluetoothSerial SerialBT;
+
+#define TOUCH_PIN 13  // Connect OUT pin of TTP223 here
+
+void setup() {
+  Serial.begin(115200);
+  SerialBT.begin("ESP32_BT"); 
+  pinMode(TOUCH_PIN, INPUT);
+  Serial.println("ESP32 with TTP223 started. Waiting for touch...");
+}
+
+void loop() {
+  int sensorValue = digitalRead(TOUCH_PIN);
+
+  if (sensorValue == HIGH) { // Touched
+    Serial.println("TOUCHED - Sending via Bluetooth");
+    SerialBT.println("TOUCHED");
+    delay(2000); // debounce
+  }
+
+  delay(100);
+}
